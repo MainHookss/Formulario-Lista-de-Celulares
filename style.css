@@ -1,0 +1,91 @@
+/* Custom CSS */
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    background-color: #343a40; /* Dark background for the header */
+    padding: 20px;
+    text-align: center;
+    color: #ffffff; /* White text */
+}
+
+header h1 {
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.card {
+    background-color: #0000007d;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    color: rgb(255, 255, 255);
+}
+
+.card-header {
+    background-color: #6c757d; /* Slightly lighter dark color for the card header */
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+.card-header h5 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.card-body label {
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    margin-top: 0.5rem;
+    border-radius: 5px;
+}
+
+.card-footer {
+    background-color: #303336b8; /* Match the footer with the header */
+    border-radius: 10px 10px 10px 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+.btn-outline-primary,
+.btn-outline-success {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.table {
+    margin-top: 1.5rem;
+    background-color: #ffffff; /* White background for the table */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+    background-color: #343a40; /* Dark background for table header */
+    color: #ffffff;
+    border-radius: 10px 10px 0 0;
+}
+
+.table th,
+.table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 1rem;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1; /* Light grey for hovered rows */
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6; /* Slightly darker border for better separation */
+}

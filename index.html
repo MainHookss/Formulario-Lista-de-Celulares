@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Lista de Celulares</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" > 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" ></script>
+    <link href="style.css" rel="stylesheet">
+    
+</head>
+<body class="bg-secondary">
+    <header>
+        <h1>Registro de Celulares</h1>
+    </header>
+    <div class="p-3"></div>
+    <main class="container-fluid row mt-3">
+        <div class="col-3">
+            <form class="card">
+                <div class="card-header">
+                    <h5>📱DATOS DEL CELULAR📱</h5>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <label>Dirección MAC</label>
+                        <input type="text" id="mac" name="mac" maxlength="17" class="form-control" onblur="verificar(this.id)" oninput="formatMAC(this)">
+                        <div id="e-mac"></div>
+                    </div>
+                    <div>
+                        <label>Marca</label>
+                        <input type="text" id="marca" name="marca" class="form-control" onblur="verificar(this.id)">
+                        <div id="e-marca"></div>
+                    </div>
+                    <div>
+                        <label>Modelo</label>
+                        <input type="text" id="modelo" name="modelo" class="form-control" onblur="verificar(this.id)">
+                        <div id="e-modelo"></div>
+                    </div>
+                    <div>
+                        <label>Sistema Operativo</label><br>
+                        <input class="form-check-input" type="radio" id="android" name="sisop" value="Android" onblur="validaRadio(this.name)">
+                        <label>Android</label><br>
+                        <input class="form-check-input" type="radio" id="ios" name="sisop" value="iOS" onblur="validaRadio(this.name)">
+                        <label>iOS</label><br>
+                        <div id="e-sisop"></div>
+                    </div>
+                    <div>
+                        <label>Fecha de Lanzamiento</label>
+                        <input type="date" id="fecha" name="fecha" class="form-control" onblur="verificar(this.id)">
+                        <div id="e-fecha"></div>
+                    </div>
+                    <div>
+                        <label>Capacidad de almacenamiento</label>
+                        <select class="form-select" id="almacenamiento" name="almacenamiento" onblur="verificar(this.id)">
+                            <option value="" selected disabled>Seleccione Capacidad de Almacenamiento</option>
+                            <option value="32GB">32 GB</option>
+                            <option value="64GB">64 GB</option>
+                            <option value="128GB">128 GB</option>
+                            <option value="256GB">256 GB</option>
+                            <option value="+256GB">+256 GB</option>
+                        </select>
+                        <div id="e-almacenamiento"></div>
+                    </div>
+                    <div>
+                        <label>Precio</label>
+                        <input type="number" id="precio" name="precio" min="0" onkeypress="return soloNumeros(event)" class="form-control" onblur="verificar(this.id)">
+                        <div id="e-precio"></div>
+                    </div>
+
+                    <div>
+                        <label>Estado del celular</label>
+                        <select class="form-select" id="estado" name="estado" onblur="verificar(this.id)">
+                            <option value="" selected disabled>Seleccione Estado</option>
+                            <option value="Nuevo">Nuevo</option>
+                            <option value="Usado (Buen estado)">Usado (Buen estado)</option>
+                            <option value="Usado (Estado regular)">Usado (Estado regular)</option>
+                            <option value="Usado (Mal estado)">Usado (Mal estado)</option>
+                        </select>
+                        <div id="e-estado"></div>
+                    </div><br>
+                    
+                    <div class="card-footer text-center">
+                        <input type="button" value="Limpiar" class="btn btn-outline-primary w-30" onclick="limpiar()">
+                        <input type="button" id="btnGuardar" value="Guardar" class="btn btn-outline-success w-30">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-9">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Direccion MAC</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Sistema operativo</th>
+                            <th>Fecha de Lanzamiento</th>
+                            <th>Capacidad de almacenamiento</th>
+                            <th>Precio</th>
+                            <th>Estado del celular</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contenido"></tbody>
+                </table>
+            </div>
+        </div>     
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="helper.js"></script>
+    <script src="funciones.js" type="module"></script>
+</body>
+</html>
