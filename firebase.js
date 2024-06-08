@@ -83,27 +83,38 @@ export const obtener = (id) => getDoc(doc(db,'Celulares',id))
 //función para actualizar los datos del documento 
 export const update = async (id, celulares) => {
     try {
-        const modeloExiste = await verificarMacExistente(celulares.mac);
-        if (modeloExiste) {
-            Swal.fire({
-                title: "Error",
-                text: "La dirección MAC ya existe en la colección",
-                icon: "error"
-            });
-            return; // Detener el proceso de actualizar el registro
-        }
-        // Actualizar el documento en Firestore
-        await updateDoc(doc(db, 'Celulares', id), celulares);
+      const macExistente = await verificarMacExistente(celulares.mac, id);
+      if (macExistente) {
+        Swal.fire({
+          title: "Error",
+          text: "La dirección MAC ya existe en la colección",
+          icon: "error"
+        });
+        return; // Detener el proceso de actualizar el registro
+      }
+      // Actualizar el documento en Firestore
+      await updateDoc(doc(db, 'Celulares', id), celulares);
+      Swal.fire({
+        title: "Actualizado",
+        text: "Su registro ha sido actualizado exitosamente",
+        icon: "success"
+      });
     } catch (error) {
-        console.error("Error al verificar la dirección MAC:", error);
+      console.error("Error al verificar la dirección MAC:", error);
     }
   };
 
 
 // Función para verificar si el modelo ya existe en la colección
-export const verificarMacExistente = async (mac) => {
-  const querySnapshot = await getDocs(query(collection(db, 'Celulares'), where('mac', '==', mac)));
-  return !querySnapshot.empty; // Retorna true si hay algún documento con el mismo modelo, de lo contrario retorna false
-}
+export const verificarMacExistente = async (mac, id = null) => {
+    let querySnapshot;
+    if (id) {
+      querySnapshot = await getDocs(query(collection(db, 'Celulares'), where('mac', '==', mac), where('__name__', '!=', id)));
+    } else {
+      querySnapshot = await getDocs(query(collection(db, 'Celulares'), where('mac', '==', mac)));
+    }
+    return !querySnapshot.empty;
+  }
+  
 
 
