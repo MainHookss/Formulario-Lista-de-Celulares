@@ -19,8 +19,6 @@ document.getElementById('btnGuardar').addEventListener('click', async () => {
             }
             
             // Verificar si el modelo ya existe en la colección antes de guardar
-            
-            
             const macExiste = await verificarMacExistente(cel.mac);
             if (macExiste) {
                 Swal.fire({
