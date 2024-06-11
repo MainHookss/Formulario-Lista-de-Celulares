@@ -1,4 +1,4 @@
-import { eliminar, getData, obtener, save, update, verificarMacExistente} from "./firebase.js"
+import { eliminar, getData, obtener, save, update} from "./firebase.js"
 
 let id = 0
 //addEventListener me permite capturar un evento 
@@ -16,19 +16,7 @@ document.getElementById('btnGuardar').addEventListener('click', async () => {
                 'almacenamiento': document.getElementById('almacenamiento').value,
                 'precio': document.getElementById('precio').value,
                 'estado': document.getElementById('estado').value
-            }
-
-            // Verificar si el modelo ya existe en la colección antes de guardar
-            const macExiste = await verificarMacExistente(cel.mac);
-            if (macExiste) {
-                Swal.fire({
-                    title: "Error",
-                    text: "La dirección MAC ya existe en la colección",
-                    icon: "error"
-                });
-                return; // Detener el proceso de guardar el registro
-            }
-
+            } 
             save(cel);
             limpiar();
         } else {
