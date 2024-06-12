@@ -61,11 +61,20 @@ const limpiar = () => {
     })
 }
 
-function validarFecha(fecha) {
+const validarFecha = (fecha) => {
     const hoy = new Date();
-    const fechaIngresada = new Date(fecha)
-    return fechaIngresada <= hoy
-}
+    hoy.setHours(0, 0, 0, 0); // Ajustar a medianoche para comparar solo fechas
+
+    const fechaIngresada = new Date(fecha);
+
+    // Verificar si la fecha ingresada es válida
+    if (isNaN(fechaIngresada.getTime())) {
+        return false; // La fecha ingresada no es válida
+    }
+
+    return fechaIngresada <= hoy;
+};
+
 
 const soloNumeros = (evt) => {
     if (evt.keyCode >= 48 && evt.keyCode <= 57)
@@ -73,9 +82,9 @@ const soloNumeros = (evt) => {
     return false
 }
 
-function formatMAC(input) {
+const formatMAC = (input) => {
     const macAddress = input.value.replace(/[^a-fA-F0-9]/g, ''); // Eliminar caracteres no válidos
     const formattedMAC = macAddress.match(/.{1,2}/g)?.join(':').substring(0, 17) || ''; // Formatear cada 2 caracteres
 
     input.value = formattedMAC;
-}
+};
