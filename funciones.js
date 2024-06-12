@@ -100,6 +100,7 @@ window.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.btn-warning').forEach( btn => {
             //async indica que necesitamos un await para esperar a que la función responda
             btn.addEventListener('click',async() =>{
+                limpiar();
                 //invocar función para buscar el documento por su id
                 const doc = await obtener(btn.id)
                 //obtener los valores del documento
